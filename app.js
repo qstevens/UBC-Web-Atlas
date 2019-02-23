@@ -6,25 +6,25 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 
 const fs = require('fs');
 
-const dbName = "UBC-Courses";
+const dbName = "2018W";
 
 client.connect(err => {
   // const collection = client.db("test").collection("devices");
  // perform actions on the collection object
 
   const db = client.db(dbName);
-  // insertDocuments(db, function() {
+  insertDocuments(db, function() {
     findDocuments(db, function() {
       client.close();
     });
-  // });
+  });
 });
 
 
 
 const insertDocuments = function(db, callback) {
   // Get the documents collection
-  const collection = db.collection('Subjects');
+  const collection = db.collection('subjects');
   // Insert some documents
   let CoursesMap = JSON.parse(fs.readFileSync('UBC-Courses.json'));
   // console.log(CoursesMap);
@@ -42,7 +42,7 @@ const insertDocuments = function(db, callback) {
 const findDocuments = function(db, callback) {
   let queryObject = {code: "CPSC"};
   // Get the documents collection
-  const collection = db.collection('Subjects');
+  const collection = db.collection('subjects');
   // Find some documents
   collection.find({code: "CPSC"}).toArray(function(err, docs) {
     console.log(docs)
