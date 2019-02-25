@@ -18,10 +18,10 @@ MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
   const db = client.db(dbName);
 
   // Create collections in database
-  const subjectTreeCollection = db.collection('treeSubjects');
+  const subjectTreeCollection = db.collection('treesubjects');
   const subjectCollection = db.collection('subjects');
 
-  const courseTreeCollection = db.collection('courseTrees');
+  const courseTreeCollection = db.collection('treecourses');
   const courseCollection = db.collection('courses');
 
   const sectionCollection = db.collection('sections');
